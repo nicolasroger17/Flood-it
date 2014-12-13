@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "roboto-medium";
+    src: url("../fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "roboto-light";
+    src: url("../fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "roboto-bold";
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
+body{
+	margin: 0;
+	background: #EEEEEE;
+	font-family: "roboto-medium";
+}
+
+h1{
+	font-size: 50px;
+	text-align: center;
+	font-family: "roboto-bold";
+	margin: 40px auto;
+}
+
+h2{
+	margin-bottom: 30px;
+}
+
+.settings{
+	background: white;
+	padding: 16px 30px 30px;
+	width: 800px;
+	margin: auto;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.newgame{
+	display: block;
+	margin: auto;
+	margin-top: 30px;
+}
