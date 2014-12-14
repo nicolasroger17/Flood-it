@@ -30,6 +30,15 @@ h2{
 	margin-bottom: 30px;
 }
 
+.settings{
+	background: white;
+	padding: 16px 30px 30px;
+	width: 800px;
+	margin: auto;
+	text-align: center;
+	border-radius: 2px;
+}
+
 #rules{
 	background: white;
 	padding: 16px 30px 30px;
@@ -42,15 +51,6 @@ h2{
 
 #rules p{
 	font-size: 16px;
-}
-
-.settings{
-	background: white;
-	padding: 16px 30px 30px;
-	width: 800px;
-	margin: auto;
-	text-align: center;
-	border-radius: 2px;
 }
 
 label{
