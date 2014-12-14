@@ -1,5 +1,5 @@
 <?php
-$MAX_SIZE = 30;
+$MAX_SIZE = 24;
 $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "black", "brown");
 
 ?>
@@ -20,7 +20,7 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 				<h2>Settings</h2>
 				<select class="grid-size">
 					<?php
-						for($i = 2; $i < $MAX_SIZE; $i += 2)
+						for($i = 2; $i <= $MAX_SIZE; $i += 2)
 							echo "<option value='" . $i . "'>" . $i . "x" . $i . "</option>";
 					?>
 				</select>
@@ -33,6 +33,10 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 				<button type="button" class="newgame btn btn-info">New Game</button>
 			</div>
 			<div id="game"><!--1.8-->
+				<div id="panel">
+					<h4>Moves: <span id="movesLeft"></span>/<span id="totalMoves"></span></h4>
+					<div id="colorPanel"></div>
+				</div>
 				<div id="board"></div>
 			</div>
 		</div>

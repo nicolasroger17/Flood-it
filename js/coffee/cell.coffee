@@ -1,36 +1,32 @@
 class Cell
 	constructor: (@row, @column, nbColor) ->
-	  @state = null
-	  @prevState = null
 	  @neighbours = Array()
+	  @state = Math.floor(Math.random() * nbColor)
+	  @prevState = @state
 
-	display: () ->
-	  $("#cell" + @row + "x" + @column).attr("color", @state)
-	  return
-
-	initialize: (state) ->
-	  @state = state
-	  @prevState = state
-	  display()
+	display: ->
+	  $("#cell" + @row + "x" + @column).attr("state", @state)
 	  return
 
 	addNeighbour: (cell) ->
 	  @neighbours.push(cell)
 	  return
 
-	notify: (color) ->
+	change: (color) ->
 	  @prevState = @state
 	  @state = color
-	  display()
-	  for i in @neighbours.length
-	  	@neighbours[i].notify @state @prevState
+	  this.display()
+	  for i in [0..@neighbours.length - 1]
+	    @neighbours[i].notify(@state, @prevState)
 	  return
 
 	notify: (current, previous) ->
-	  if @state is previous and @state is not current
-	    @prevState = state
+	  current = parseInt(current)
+	  previous = parseInt(previous)
+	  if @state == previous and @state != current
+	    @prevState = @state
 	    @state = current
-	    display()
-	    for i in @neighbours.length
+	    this.display()
+	    for i in [0..@neighbours.length - 1]
 	      @neighbours[i].notify(@state, @prevState)
   	  return

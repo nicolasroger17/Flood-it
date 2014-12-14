@@ -5,46 +5,38 @@ Cell = (function() {
   function Cell(row, column, nbColor) {
     this.row = row;
     this.column = column;
-    this.state = null;
-    this.prevState = null;
     this.neighbours = Array();
+    this.state = Math.floor(Math.random() * nbColor);
+    this.prevState = this.state;
   }
 
   Cell.prototype.display = function() {
-    $("#cell" + this.row + "x" + this.column).attr("color", this.state);
-  };
-
-  Cell.prototype.initialize = function(state) {
-    this.state = state;
-    this.prevState = state;
-    display();
+    $("#cell" + this.row + "x" + this.column).attr("state", this.state);
   };
 
   Cell.prototype.addNeighbour = function(cell) {
     this.neighbours.push(cell);
   };
 
-  Cell.prototype.notify = function(color) {
-    var i, _i, _len, _ref;
+  Cell.prototype.change = function(color) {
+    var i, _i, _ref;
     this.prevState = this.state;
     this.state = color;
-    display();
-    _ref = this.neighbours.length;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      i = _ref[_i];
-      this.neighbours[i].notify(this.state(this.prevState));
+    this.display();
+    for (i = _i = 0, _ref = this.neighbours.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      this.neighbours[i].notify(this.state, this.prevState);
     }
   };
 
   Cell.prototype.notify = function(current, previous) {
-    var i, _i, _len, _ref;
-    if (this.state === previous && this.state === !current) {
-      this.prevState = state;
+    var i, _i, _ref;
+    current = parseInt(current);
+    previous = parseInt(previous);
+    if (this.state === previous && this.state !== current) {
+      this.prevState = this.state;
       this.state = current;
-      display();
-      _ref = this.neighbours.length;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        i = _ref[_i];
+      this.display();
+      for (i = _i = 0, _ref = this.neighbours.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
         this.neighbours[i].notify(this.state, this.prevState);
       }
     }
