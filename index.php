@@ -18,18 +18,22 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 		<div class="content">
 			<div class="settings">
 				<h2>Settings</h2>
-				<select class="grid-size">
-					<?php
-						for($i = 2; $i <= $MAX_SIZE; $i += 2)
-							echo "<option value='" . $i . "'>" . $i . "x" . $i . "</option>";
-					?>
-				</select>
-				<select class="color-number">
-					<?php
-						for($i = 4; $i < count($COLORS); $i++)
-							echo "<option value='" . $i . "'>" . $i . "</option>";
-					?>
-				</select>
+				<label>Grid:
+					<select class="grid-size">
+						<?php
+							for($i = 2; $i <= $MAX_SIZE; $i += 2)
+								echo "<option value='" . $i . "'>" . $i . "x" . $i . "</option>";
+						?>
+					</select>
+				</label>
+				<label>Number of colors:
+					<select class="color-number">
+						<?php
+							for($i = 4; $i < count($COLORS); $i++)
+								echo "<option value='" . $i . "'>" . $i . "</option>";
+						?>
+					</select>
+				</label>
 				<button type="button" class="newgame btn btn-info">New Game</button>
 			</div>
 			<div id="game"><!--1.8-->
