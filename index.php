@@ -34,7 +34,7 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 			</div>
 			<div id="game"><!--1.8-->
 				<div id="panel">
-					<h4>Moves: <span id="movesLeft"></span>/<span id="totalMoves"></span></h4>
+					<h4 id="infos">Moves: <span id="movesLeft"></span>/<span id="totalMoves"></span></h4>
 					<div id="colorPanel"></div>
 				</div>
 				<div id="board"></div>

@@ -60,6 +60,11 @@ h2{
 	text-align: center;
 }
 
+#infos{
+	margin: 0;
+	margin-bottom: 20px;
+}
+
 #colorPanel{
 	height: 40px;
 }
@@ -75,6 +80,7 @@ h2{
 	width: 40px;
 	border: 2px solid white;
 	float: left;
+	transition: transform .3s ease;
 }
 
 /*blue*/

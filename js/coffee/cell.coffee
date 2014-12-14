@@ -1,11 +1,19 @@
 class Cell
 	constructor: (@row, @column, nbColor) ->
 	  @neighbours = Array()
-	  @state = Math.floor(Math.random() * nbColor)
+	  @state = parseInt(Math.floor(Math.random() * nbColor))
 	  @prevState = @state
 
 	display: ->
-	  $("#cell" + @row + "x" + @column).attr("state", @state)
+	  c = $("#cell" + @row + "x" + @column)
+	  that = this
+	  setTimeout ( ->
+	      c.attr("state", that.state)
+	      return
+	  ), 150
+	  c.css("transform", "rotateX(" + @getRotationCycle(c, 'X') + "deg)")
+	  
+	  
 	  return
 
 	addNeighbour: (cell) ->
@@ -14,7 +22,7 @@ class Cell
 
 	change: (color) ->
 	  @prevState = @state
-	  @state = color
+	  @state = parseInt(color)
 	  this.display()
 	  for i in [0..@neighbours.length - 1]
 	    @neighbours[i].notify(@state, @prevState)
@@ -30,3 +38,24 @@ class Cell
 	    for i in [0..@neighbours.length - 1]
 	      @neighbours[i].notify(@state, @prevState)
   	  return
+
+	getRotationCycle: (element, axis) ->
+	  matrixStyle = element.css('transform')
+	  
+	  if (matrixStyle is "none")
+	      return 180;
+
+	  matrix = WebKitCSSMatrix && (new WebKitCSSMatrix(matrixStyle)) || 
+	             MozCSSMatrix && (new MozCSSMatrix(matrixStyle)) || 
+	             MsCSSMatrix && (new MsCSSMatrix(matrixStyle)) || 
+	             OCSSMatrix && (new OCSSMatrix(matrixStyle)) ||     
+	             CSSMatrix && (new CSSMatrix(matrixStyle))
+
+	  switch axis.toUpperCase()
+	    when 'X'then rotation = Math.acos(matrix.a)
+	    when 'Y'then rotation = Math.asin(matrix.b)
+	    else throw "This function accepts rotation axis name (string) as the first parameter. Possible values: 'X', 'Y', 'Z'";
+
+	  rotation *= 180/Math.PI; # getting rotation in degrees. This is good for me for debug purposes but bad for performance, of course, ...
+
+	  return rotation % 360; # ... so you can skip degrees and do it in radians only

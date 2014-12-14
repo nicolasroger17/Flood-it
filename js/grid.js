@@ -14,6 +14,8 @@ Grid = (function() {
     $("#panel").css("width", nbColor * 40 + 60);
     $("#colorPanel").empty();
     $("#colorPanel").css("width", nbColor * 40);
+    $("#infos").empty();
+    $("#infos").html('Moves: <span id="movesLeft"></span>/<span id="totalMoves"></span>');
     $("#movesLeft").html(this.moves);
     $("#totalMoves").html(this.totalMoves);
     for (i = _i = 0, _ref = nbColor - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
@@ -22,9 +24,7 @@ Grid = (function() {
     that = this;
     $("#colorPanel .cell").each(function() {
       $(this).click(function() {
-        that.change($(this).attr("state"));
-        that.moves++;
-        $("#movesLeft").html(that.moves);
+        return that.change($(this));
       });
     });
     for (i = _j = 0, _ref1 = size * size - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
@@ -50,8 +50,32 @@ Grid = (function() {
     }
   }
 
-  Grid.prototype.change = function(color) {
-    this.grid[0].change(color);
+  Grid.prototype.change = function(square) {
+    this.grid[0].change(square.attr("state"));
+    this.moves++;
+    $("#movesLeft").html(this.moves);
+    if (this.checkWin()) {
+      this.endOfGame(true);
+    } else if (this.moves === this.totalMoves) {
+      this.endOfGame(false);
+    }
+  };
+
+  Grid.prototype.checkWin = function() {
+    var i, _i, _ref;
+    for (i = _i = 0, _ref = this.grid.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+      if (this.grid[i].state !== this.grid[0].state) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  Grid.prototype.endOfGame = function(isWin) {
+    $("#colorPanel .cell").each(function() {
+      return $(this).unbind();
+    });
+    $("#infos").html(isWin ? "WIN !!" : "LOST !!");
   };
 
   return Grid;

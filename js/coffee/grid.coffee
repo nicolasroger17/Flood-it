@@ -11,6 +11,8 @@ class Grid
 	  $("#panel").css("width", nbColor * 40 + 60)
 	  $("#colorPanel").empty()
 	  $("#colorPanel").css("width", nbColor * 40)
+	  $("#infos").empty()
+	  $("#infos").html('Moves: <span id="movesLeft"></span>/<span id="totalMoves"></span>')
 	  $("#movesLeft").html(@moves);
 	  $("#totalMoves").html(@totalMoves)
 
@@ -20,10 +22,7 @@ class Grid
 	  that = this
 	  $("#colorPanel .cell").each () ->
 	    $(this).click () ->
-	      that.change($(this).attr("state"))
-	      that.moves++;
-	      $("#movesLeft").html(that.moves);
-	      return
+	      that.change($(this))
 	    return
 
 	  for i in [0..size*size - 1]
@@ -43,6 +42,24 @@ class Grid
 	      @grid[i].addNeighbour(@grid[i + size])
 	    @grid[i].display();
 
-	change: (color) ->
-	  @grid[0].change(color);
+	change: (square) ->
+	  @grid[0].change(square.attr("state"));
+	  @moves++;
+	  $("#movesLeft").html(@moves);
+	  if(@checkWin())
+	    @endOfGame(true)
+	  else if(@moves is @totalMoves)
+	  	@endOfGame(false)
+	  return
+
+	checkWin: ->
+	  for i in [0..@grid.length - 1]
+	  	if(@grid[i].state != @grid[0].state)
+	      return false
+	  return true
+
+	endOfGame: (isWin) ->
+	  $("#colorPanel .cell").each () ->
+	    $(this).unbind()
+	  $("#infos").html( if isWin then "WIN !!" else "LOST !!")
 	  return
