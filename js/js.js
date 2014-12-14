@@ -1,3 +1,5 @@
+var grid;
+
 $(document).ready(function(){
 	initializeMenu();
 	newGame();
@@ -14,6 +16,5 @@ function initializeMenu(){
 }
 
 function newGame(){
-	console.log($('.grid-size').val());
-	console.log($('.color-number').val());
+	grid = new Grid($('.grid-size').val(), $('.color-number').val())
 }

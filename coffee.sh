@@ -1,0 +1,1 @@
+coffee -cbmw --output js/ js/coffee

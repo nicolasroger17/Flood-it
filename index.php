@@ -32,13 +32,15 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 				</select>
 				<button type="button" class="newgame btn btn-info">New Game</button>
 			</div>
-			<div class="game"><!--1.8-->
-
+			<div id="game"><!--1.8-->
+				<div id="board"></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src='js/bootstrap.min.js'></script>
 		<script type="text/javascript" src='js/bootstrap-select.min.js'></script>
+		<script type="text/javascript" src="js/grid.js"></script>
+		<script type="text/javascript" src="js/cell.js"></script>
 		<script type="text/javascript" src="js/js.js"></script>
 	</body>
 </html>

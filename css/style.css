@@ -44,3 +44,21 @@ h2{
 	margin: auto;
 	margin-top: 30px;
 }
+
+#game{
+	margin: 30px auto;
+	background: white;
+	padding: 30px 28px 30px 30px;
+}
+
+#board{
+	margin: auto;
+}
+
+.cell{
+	height: 60px;
+	width: 60px;
+	border: 2px solid white;
+	float: left;
+	background: blue;
+}
