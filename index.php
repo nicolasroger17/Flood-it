@@ -16,6 +16,14 @@ $COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "bla
 	<body>
 		<h1>Flood it</h1>
 		<div class="content">
+			<div id='rules'>
+				<h2>Rules</h2>
+				<p>
+					The goal is to fill the grid with only one color <br>
+					To achieve this, you can change the top left tile color, and it will change the color <br>
+					Of its neighbours if they have of the same color.
+				</p>
+			</div>
 			<div class="settings">
 				<h2>Settings</h2>
 				<label>Grid:
