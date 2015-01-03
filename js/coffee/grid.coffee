@@ -2,7 +2,7 @@ class Grid
 	constructor: (size, nbColor) ->
 	  size = parseInt(size)
 	  @grid = Array()
-	  @totalMoves = Math.floor(size*(nbColor/3.35))
+	  @totalMoves = Math.floor(size*(nbColor/2.8)) #3.35
 	  @moves = 0
 	  $("#board").empty()
 	  $("#board").css("width", size * 40 + 60)
@@ -28,7 +28,11 @@ class Grid
 	  for i in [0..size*size - 1]
 	    row = Math.floor(i / size)
 	    column = i % size
-	    $("#board").append("<div class='cell' id='cell" + row + "x" + column + "'></div>")
+	    html = "<div class='cell' id='cell" + row + "x" + column + "' position='front'>" + 
+	    			"<div class='front tile'></div>" +
+	    			"<div class='back tile'></div>" +
+	    		"</div>"
+	    $("#board").append(html);
 	    @grid.push(new Cell(row, column, nbColor))
 
 	  for i in [0..size*size - 1]

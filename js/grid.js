@@ -3,10 +3,10 @@ var Grid;
 
 Grid = (function() {
   function Grid(size, nbColor) {
-    var column, i, row, that, _i, _j, _k, _ref, _ref1, _ref2;
+    var column, html, i, row, that, _i, _j, _k, _ref, _ref1, _ref2;
     size = parseInt(size);
     this.grid = Array();
-    this.totalMoves = Math.floor(size * (nbColor / 3.35));
+    this.totalMoves = Math.floor(size * (nbColor / 2.8));
     this.moves = 0;
     $("#board").empty();
     $("#board").css("width", size * 40 + 60);
@@ -30,7 +30,8 @@ Grid = (function() {
     for (i = _j = 0, _ref1 = size * size - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
       row = Math.floor(i / size);
       column = i % size;
-      $("#board").append("<div class='cell' id='cell" + row + "x" + column + "'></div>");
+      html = "<div class='cell' id='cell" + row + "x" + column + "' position='front'>" + "<div class='front tile'></div>" + "<div class='back tile'></div>" + "</div>";
+      $("#board").append(html);
       this.grid.push(new Cell(row, column, nbColor));
     }
     for (i = _k = 0, _ref2 = size * size - 1; 0 <= _ref2 ? _k <= _ref2 : _k >= _ref2; i = 0 <= _ref2 ? ++_k : --_k) {

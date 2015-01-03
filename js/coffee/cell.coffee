@@ -4,16 +4,16 @@ class Cell
 	  @state = parseInt(Math.floor(Math.random() * nbColor))
 	  @prevState = @state
 
-	display: ->
+	display: (isFirst) ->
+	  isFirst = if isFirst then isFirst else true;
+	  console.log("bouh");
 	  c = $("#cell" + @row + "x" + @column)
+	  flipPos = if c.attr("position") == "front" && !isFirst then "back" else "front";
+	  c.attr("position", flipPos);
+
 	  that = this
-	  setTimeout ( ->
-	      c.attr("state", that.state)
-	      return
-	  ), 150
+	  c.find("." + flipPos).attr("state", that.state)
 	  c.css("transform", "rotateX(" + @getRotationCycle(c, 'X') + "deg)")
-	  
-	  
 	  return
 
 	addNeighbour: (cell) ->

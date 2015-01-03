@@ -10,13 +10,15 @@ Cell = (function() {
     this.prevState = this.state;
   }
 
-  Cell.prototype.display = function() {
-    var c, that;
+  Cell.prototype.display = function(isFirst) {
+    var c, flipPos, that;
+    isFirst = isFirst ? isFirst : true;
+    console.log("bouh");
     c = $("#cell" + this.row + "x" + this.column);
+    flipPos = c.attr("position") === "front" && !isFirst ? "back" : "front";
+    c.attr("position", flipPos);
     that = this;
-    setTimeout((function() {
-      c.attr("state", that.state);
-    }), 150);
+    c.find("." + flipPos).attr("state", that.state);
     c.css("transform", "rotateX(" + this.getRotationCycle(c, 'X') + "deg)");
   };
 
