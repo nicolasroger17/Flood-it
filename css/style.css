@@ -117,6 +117,7 @@ label+label{
 	top: 0;
 	left: 0;
 }
+
 .back {
 	transform: rotateX(180deg);
 }

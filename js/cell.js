@@ -13,7 +13,6 @@ Cell = (function() {
   Cell.prototype.display = function(isFirst) {
     var c, flipPos, that;
     isFirst = isFirst ? isFirst : true;
-    console.log("bouh");
     c = $("#cell" + this.row + "x" + this.column);
     flipPos = c.attr("position") === "front" && !isFirst ? "back" : "front";
     c.attr("position", flipPos);

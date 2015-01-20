@@ -6,7 +6,6 @@ class Cell
 
 	display: (isFirst) ->
 	  isFirst = if isFirst then isFirst else true;
-	  console.log("bouh");
 	  c = $("#cell" + @row + "x" + @column)
 	  flipPos = if c.attr("position") == "front" && !isFirst then "back" else "front";
 	  c.attr("position", flipPos);
