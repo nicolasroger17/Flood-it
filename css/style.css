@@ -130,7 +130,7 @@ label+label{
 /*green*/
 .tile[state='1'],
 .cell[state='1']{
-	background: #4CAF50;
+	background: #BDBDBD;
 }
 /*red*/
 .tile[state='2'],
@@ -155,7 +155,7 @@ label+label{
 /*grey*/
 .tile[state='6'],
 .cell[state='6']{
-	background: #BDBDBD;
+	background: #4CAF50;
 }
 /*black*/
 .tile[state='7'],

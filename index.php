@@ -1,6 +1,6 @@
 <?php
 $MAX_SIZE = 24;
-$COLORS = array("blue", "green", "red", "yellow", "teal", "orange", "grey", "black", "brown");
+$COLORS = array("blue", "grey", "red", "yellow", "teal", "orange", "green", "black", "brown");
 
 ?>
 <!DOCTYPE html>
